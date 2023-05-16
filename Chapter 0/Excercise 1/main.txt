@@ -1,0 +1,1 @@
+It is an expression which adds two integer literals of type int (3 and 4) then discards the result.

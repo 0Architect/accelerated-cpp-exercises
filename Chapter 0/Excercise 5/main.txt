@@ -1,0 +1,2 @@
+It is not a valid program. Despite the fact that C++ programs can be written in free-form, functions such as main must have a corresponding statement block({}).
+It is not neccessary but highly recommended to return 0 in your main programs.

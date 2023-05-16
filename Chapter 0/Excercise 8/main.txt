@@ -1,0 +1,1 @@
+It works. The using the comment delimeter (//) everything on that line becomes a comment. Including other delimeters. The delimeter (//) and (/* */) apart from their ability to span multiple lines, differ in the sense that one comments till closing delimeter is met (/* */) and the other comments the entire line(//);

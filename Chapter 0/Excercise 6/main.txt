@@ -1,0 +1,1 @@
+It is a valid program. You can nest as many statement blocks as desired. However, despite not being neccessary it is highly recommended to return 0 in your main programs,

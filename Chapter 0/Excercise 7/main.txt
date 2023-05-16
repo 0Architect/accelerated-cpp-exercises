@@ -1,0 +1,1 @@
+No it is not. The first '*/' delimeter matches the starting delimeter, which signals to c++ that the comment is completed. So everything after: 'as its starting and ending delimiters */...' is interpreted as C++ code. Which are not tokens in the language, causing a syntatic error.
