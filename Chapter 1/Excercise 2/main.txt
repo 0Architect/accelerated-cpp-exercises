@@ -1,0 +1,4 @@
+It is valid. The first definition is obviously valid. Strings are permited to have concatenation. So we would have:
+hello + ", world" which yields a concatenated string. This string is then concatenated with the string literal "!".
+
+#Note there is no explicit definition of concatenation between strings and string literals. The compiler utilises the parametized constructor the string class has to convert the string literal into a string.

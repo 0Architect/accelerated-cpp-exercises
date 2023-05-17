@@ -1,0 +1,19 @@
+//Background info
+So first of all, we need to talk about buffers.
+We know std::cout<< streams data into the output buffer. However, this buffer will not flush (Show the output and correspondingly clear itself of any data within it) unless a newline character is met, it is full, or explicitly told to do so (with manipulators such as std::endl or functions such as .flush())
+
+However, in some cases (specific environments or implementations), it may not be the case that there is line-buffering. That is, newline triggers the buffer to be flushed. So to be safe, utilize the other methods shown.
+
+Finally, the input buffer is MAJORITY of the time inextricably linked to the actual implementation. By default it is usually block-buffered. So it receives characters till a new line is met at which point it makes the input available to the program.
+
+There is no 'flushing' as in output buffers. However, the input buffer still stores unprocessed characters. The behavior of cin depends on the manner it is called. If we use it with the extraction operator(>>), it reads until a white-space character (tabs, spaces, newlines) is processed, at that point it leaves it in the buffer, with the rest of the unprocessed input and makes the processed ones available to the program.
+If called with the getline() function, it does so until a newline is met.
+
+The >> operator ignores the first contiguous whitespace characters it meets until a non-white-space character. At which point it processes it, till it meets a white-space character. And the behavior described earlier is displayed.
+
+Note: Consumed data is no longer available for the input stream. There is cin.unget() but it's behavior is highly implementation dependent and it is intended for use with one character. It cannot undo a sequence of operations that have processed multiple characters.
+
+cin>> skips white-space characters as said earlier and only requests for input if it encounters a non-whitespace character. getline() does not display this behavior.
+
+//Solution to problem
+Now, concerning the problem, it is quite clear to see that the first std::cin>> operation as (described by the question) receives two input separated by a whitespace character. From the earlier explanation, we know the first sequence of non-characters would be processed. However, on the second operation cin>> there are still unprocessed data in the input buffer. So it ignores the whitespace (the one separating them) then reads the last name into the variable. And therefore does not request for additional input

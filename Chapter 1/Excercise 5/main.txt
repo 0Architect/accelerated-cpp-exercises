@@ -1,0 +1,1 @@
+It is not valid. Because of scoping, the inner x variable is not defined in the outer scope and an error is thrown. To solve the problem, remove the inner scope. It is unnecessary for the code to run.

@@ -1,0 +1,3 @@
+Yes it is valid. The scope of each s variable is limited to it's statement block, so it does not interfere with the other. The result is:
+a string
+another string

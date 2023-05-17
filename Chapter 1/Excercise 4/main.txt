@@ -1,0 +1,2 @@
+Because of scoping, both s variables are considered different. So the compiler does not see clashing declarations
+The semicolon after the braces is interpreted as a null statement which has no effect. Therefore the program runs without any bugs.
