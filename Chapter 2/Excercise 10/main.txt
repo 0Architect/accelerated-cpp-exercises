@@ -1,0 +1,4 @@
+Namespaces are also scoped. In the program the first using std:: is not reflected outside the scope.
+We define a synonym for cout with using std::cout
+
+The second and third definitions are required to tell the compiler that we want to work in the std namespace.
