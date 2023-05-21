@@ -1,0 +1,3 @@
+The key is to realize that every addition to the vector, shifts the median by 1 to either to the left (greater than the current median) or to the right(smaller than the current median) of the vector. Or remains the same (equal to the median).
+Using the aforementioned idea, given a vector v, you can move the median to any value contained in this original vector, by adding values (either greater or less than the median) to the vector.
+So regardless of wherever the discarded value is located, by adding values either smaller or greater than the median, you can systematically move the median to where the discarded value is.
