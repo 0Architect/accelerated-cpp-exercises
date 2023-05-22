@@ -1,0 +1,1 @@
+f's return type is a container that supports indexing '[]'. That is it most likely uses randomIterators or pointers. These could be vectors, strings, or even arrays. However, we can boil it down to a container that can hold elements of type double, such as an array or a vector.

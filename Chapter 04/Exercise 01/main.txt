@@ -1,0 +1,7 @@
+No, the code wouldn't work because the types are mismatched. To fix the error:
+
+================================================================================
+int maxlen;
+Student_info s;
+max(s.name.size(), static_cast<std::string::size_type> (maxlen));
+================================================================================
