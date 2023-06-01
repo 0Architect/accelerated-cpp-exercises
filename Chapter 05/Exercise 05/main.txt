@@ -1,0 +1,5 @@
+1. The content should be left-aligned (No leading or trailing spaces).
+Otherwise it would distort the appearance.
+
+2. There should be at least one word with two less than the maximum.
+(To appreciate the effect).

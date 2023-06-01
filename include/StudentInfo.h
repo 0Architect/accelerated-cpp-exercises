@@ -32,10 +32,9 @@ std::istream &read_hw(std::istream &in, std::vector<double>& vec)
     return in;
 }
 
-//Changed
 struct Student_info{
     std::string name;
-    double final_grade;
+    double midterm, final_grade;
     std::vector<double> homework;
 };
 
@@ -46,28 +45,19 @@ double grade(double midterm, double final, const std::vector<double>& homework)
  return grade(midterm, final, median(homework));
 }
 
-//Changed
 std::istream &read(std::istream &in, Student_info &s1)
 {
-    double final, midterm;
-    in >> s1.name >> final >> midterm;
+    in >> s1.name >> s1.final_grade >> s1.midterm;
     read_hw(in, s1.homework);
-    s1.final_grade = grade(midterm, final, s1.homework);
     return in;
 }
 
-//Changed
-double grade(Student_info&s1)
+double grade(const Student_info&s1)
 {
-    return s1.final_grade;
+    return grade(s1.midterm, s1.final_grade, s1.homework);
 }
 
 bool compare(const Student_info& x, const Student_info& y)
 {
  return x.name < y.name;
-}
-
-int main()
-{
-    return 0;
 }

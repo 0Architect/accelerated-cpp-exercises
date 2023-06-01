@@ -1,0 +1,5 @@
+The previous values would persist in the next iteration. Eg:
+john
+johnsam
+
+instead of just sam.
