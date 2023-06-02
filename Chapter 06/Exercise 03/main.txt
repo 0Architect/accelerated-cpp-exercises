@@ -1,0 +1,7 @@
+The code initializes u with 10 elements each with value 100
+
+It then initializes an empty vector with no elements
+
+it attempts the copy the elements from vector u to v but can't because v is of size 0.
+
+When executed throws a runtime error

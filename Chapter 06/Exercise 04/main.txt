@@ -1,0 +1,10 @@
+THE FIRST APPROACH: v.resize()
+
+Advantage: Takes less memory. Because push_back is not being called which doubles the size of capacity of the vector every time it is called, the vector is exactly the size it needs to be.
+Disadvantage: The solution is not flexible and if we are copying from a larger range wouldn't work.
+
+========================================================================================================================
+
+THE SECOND APPROACH: v.resize()
+Advantage: The solution is flexible and if we are copying from a larger range it would still work.
+Disadvantage: Takes more memory. Because push_back is being called (with back_inserter) which doubles the size of capacity of the vector every time it is called, the vector is 6 more than it needs to be.
