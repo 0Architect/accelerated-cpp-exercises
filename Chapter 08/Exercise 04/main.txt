@@ -1,0 +1,2 @@
+The value of begin would be lost. (begin = end)
+and you would be assigning the values of end to itself. (end = begin // begin == end)

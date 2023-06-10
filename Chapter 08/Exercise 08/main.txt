@@ -1,0 +1,1 @@
+begin + end results in an error as the plus operation (+) is not defined on iterators.
