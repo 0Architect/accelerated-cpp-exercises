@@ -36,6 +36,7 @@ struct Student_info
     std::string name;
     double midterm, final;
     std::vector<double> homework;
+    bool valid(){return !homework.empty();}
 };
 
 double grade(double midterm, double final, const std::vector<double> &homework)
