@@ -4,39 +4,57 @@
 #include <memory>
 
 template <class T, class Alloc = std::allocator<T>>
-class Vec {
+class Vec
+{
 private:
-    T* elements;
-    T* first_free;
-    T* cap;
+    T *elements;
+    T *first_free;
+    T *cap;
     Alloc alloc;
 
 public:
     Vec() : elements(nullptr), first_free(nullptr), cap(nullptr) {}
 
-    Vec(const Vec& other) {
+    Vec(const Vec &other)
+    {
         range_initialize(other.begin(), other.end());
     }
 
-    Vec& operator=(const Vec& other) {
-        if (this != &other) {
+    template <class InputIterator>
+    Vec(InputIterator begin, InputIterator end)
+    {
+        size_t size = std::distance(begin, end);
+
+        data = alloc.allocate(size);
+        limit = avail = data + size;
+
+        std::uninitialized_copy(begin, end, data);
+    }
+
+    Vec &operator=(const Vec &other)
+    {
+        if (this != &other)
+        {
             free();
             range_initialize(other.begin(), other.end());
         }
         return *this;
     }
 
-    ~Vec() {
+    ~Vec()
+    {
         free();
     }
 
-    void push_back(const T& value) {
+    void push_back(const T &value)
+    {
         if (size() == capacity())
             reallocate();
         alloc.construct(first_free++, value);
     }
 
-    void erase(size_t index) {
+    void erase(size_t index)
+    {
         if (index >= size())
             return;
         alloc.destroy(elements + index);
@@ -44,50 +62,61 @@ public:
         --first_free;
     }
 
-    void clear() {
-        for (T* p = first_free; p != elements; /* empty */) {
+    void clear()
+    {
+        for (T *p = first_free; p != elements; /* empty */)
+        {
             alloc.destroy(--p);
         }
         first_free = elements;
     }
 
-    size_t size() const {
+    size_t size() const
+    {
         return first_free - elements;
     }
 
-    size_t capacity() const {
+    size_t capacity() const
+    {
         return cap - elements;
     }
 
-    T* begin() const {
+    T *begin() const
+    {
         return elements;
     }
 
-    T* end() const {
+    T *end() const
+    {
         return first_free;
     }
 
 private:
-    void range_initialize(T* first, T* last) {
+    void range_initialize(T *first, T *last)
+    {
         size_t new_size = last - first;
         elements = alloc.allocate(new_size);
         first_free = cap = elements + new_size;
         std::uninitialized_copy(first, last, elements);
     }
 
-    void free() {
-        if (elements) {
-            for (T* p = first_free; p != elements; /* empty */) {
+    void free()
+    {
+        if (elements)
+        {
+            for (T *p = first_free; p != elements; /* empty */)
+            {
                 alloc.destroy(--p);
             }
             alloc.deallocate(elements, cap - elements);
         }
     }
 
-    void reallocate() {
+    void reallocate()
+    {
         size_t new_capacity = (capacity() == 0) ? 1 : 2 * capacity();
-        T* new_elements = alloc.allocate(new_capacity);
-        T* new_first_free = std::uninitialized_copy(elements, first_free, new_elements);
+        T *new_elements = alloc.allocate(new_capacity);
+        T *new_first_free = std::uninitialized_copy(elements, first_free, new_elements);
         free();
         elements = new_elements;
         first_free = new_first_free;
